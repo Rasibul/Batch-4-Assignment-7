@@ -18,6 +18,19 @@ CREATE TABLE books (
 );
 
 
+-- insert some data into the books table
+INSERT INTO books (id, title, author, price, stock, published_year) VALUES
+(1, 'The Pragmatic Programmer', 'Andrew Hunt', 40.00, 10, 1999),
+(2, 'Clean Code', 'Robert C. Martin', 35.00, 5, 2008),
+(3, 'You Don''t Know JS', 'Kyle Simpson', 30.00, 8, 2014),  
+(4, 'Refactoring', 'Martin Fowler', 50.00, 3, 1999),
+(5, 'Database Design Principles', 'Jane Smith', 20.00, 0, 2018);
+
+-- select all rows from the books table
+SELECT * FROM books;
+
+
+
 --  create a table named customers with the following columns:
 --  id: integer, primary key, auto increment
 --  name: string, not null
@@ -30,6 +43,15 @@ CREATE TABLE customers (
     email VARCHAR(255) UNIQUE NOT NULL,                
     joined_date DATE DEFAULT CURRENT_DATE            
 );
+
+-- insert some data into the customers table
+INSERT INTO customers (id, name, email, joined_date) VALUES
+(1, 'Alice', 'alice@email.com', '2023-01-10'),
+(2, 'Bob', 'bob@email.com', '2022-05-15'),
+(3, 'Charlie', 'charlie@email.com', '2023-06-20');
+
+-- select all rows from the customers table
+SELECT * FROM customers;
 
 
 --  create a table named orders with the following columns:
@@ -48,26 +70,11 @@ CREATE TABLE orders (
 );
 
 
-INSERT INTO books (id, title, author, price, stock, published_year) VALUES
-(1, 'The Pragmatic Programmer', 'Andrew Hunt', 40.00, 10, 1999),
-(2, 'Clean Code', 'Robert C. Martin', 35.00, 5, 2008),
-(3, 'You Don''t Know JS', 'Kyle Simpson', 30.00, 8, 2014),  
-(4, 'Refactoring', 'Martin Fowler', 50.00, 3, 1999),
-(5, 'Database Design Principles', 'Jane Smith', 20.00, 0, 2018);
-
-
-INSERT INTO customers (id, name, email, joined_date) VALUES
-(1, 'Alice', 'alice@email.com', '2023-01-10'),
-(2, 'Bob', 'bob@email.com', '2022-05-15'),
-(3, 'Charlie', 'charlie@email.com', '2023-06-20');
-
+-- insert some data into the orders table
 INSERT INTO orders (id, customer_id, book_id, quantity, order_date) VALUES
 (1, 1, 2, 1, '2024-03-10'),
 (2, 2, 1, 1, '2024-02-20'),
 (3, 1, 3, 2, '2024-03-05');
 
-
-
-SELECT * FROM books;
-SELECT * FROM customers;
+-- select all rows from the orders table
 SELECT * FROM orders;
