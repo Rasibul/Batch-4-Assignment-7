@@ -117,3 +117,7 @@ FROM customers c
 JOIN orders o ON c.id = o.customer_id
 GROUP BY c.id
 HAVING COUNT(o.id) > 1;
+
+-- problem 6:  Find the average price of books in the store.
+SELECT ROUND(AVG(price), 2) AS avg_book_price
+FROM books;
