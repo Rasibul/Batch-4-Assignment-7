@@ -78,3 +78,9 @@ INSERT INTO orders (id, customer_id, book_id, quantity, order_date) VALUES
 
 -- select all rows from the orders table
 SELECT * FROM orders;
+
+
+
+-- problem 1: Find books that are out of stock.
+
+SELECT title FROM books WHERE stock = 0;
