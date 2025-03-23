@@ -18,6 +18,7 @@ CREATE TABLE books (
 );
 
 
+
 -- insert some data into the books table
 INSERT INTO books (id, title, author, price, stock, published_year) VALUES
 (1, 'The Pragmatic Programmer', 'Andrew Hunt', 40.00, 10, 1999),
@@ -28,6 +29,8 @@ INSERT INTO books (id, title, author, price, stock, published_year) VALUES
 
 -- select all rows from the books table
 SELECT * FROM books;
+
+
 
 
 
@@ -52,6 +55,8 @@ INSERT INTO customers (id, name, email, joined_date) VALUES
 
 -- select all rows from the customers table
 SELECT * FROM customers;
+
+
 
 
 --  create a table named orders with the following columns:
@@ -81,6 +86,8 @@ SELECT * FROM orders;
 
 
 
+
+
 -- problem 1: Find books that are out of stock.
 
 SELECT title FROM books WHERE stock = 0;
@@ -89,3 +96,24 @@ SELECT title FROM books WHERE stock = 0;
 -- problem 2: Retrieve the most expensive book in the store.
 
 SELECT * FROM books ORDER BY price DESC LIMIT 1;
+
+-- problem 3:  Find the total number of orders placed by each customer.
+
+SELECT c.name, COUNT(o.id) AS total_orders
+FROM customers c
+LEFT JOIN orders o ON c.id = o.customer_id
+GROUP BY c.id;
+
+-- problem 4: Calculate the total revenue generated from book sales.
+
+SELECT SUM(price * quantity) AS total_revenue
+FROM books b
+JOIN orders o ON b.id = o.book_id;
+
+-- problem 5: List all customers who have placed more than one order.
+
+SELECT c.name, COUNT(o.id) AS orders_count
+FROM customers c
+JOIN orders o ON c.id = o.customer_id
+GROUP BY c.id
+HAVING COUNT(o.id) > 1;
