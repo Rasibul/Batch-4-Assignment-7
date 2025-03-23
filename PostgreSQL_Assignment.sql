@@ -128,3 +128,13 @@ FROM books;
 UPDATE books
 SET price = ROUND(price * 1.10, 2)
 WHERE published_year < 2000;
+
+-- problem 8: Delete customers who haven't placed any orders.
+
+DELETE FROM customers
+WHERE id IN (
+    SELECT c.id 
+    FROM customers c
+    LEFT JOIN orders o ON c.id = o.customer_id
+    WHERE o.id IS NULL
+);
