@@ -121,3 +121,10 @@ HAVING COUNT(o.id) > 1;
 -- problem 6:  Find the average price of books in the store.
 SELECT ROUND(AVG(price), 2) AS avg_book_price
 FROM books;
+
+
+-- problem 7: Increase the price of all books published before 2000 by 10%.
+
+UPDATE books
+SET price = ROUND(price * 1.10, 2)
+WHERE published_year < 2000;
